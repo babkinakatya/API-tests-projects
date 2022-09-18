@@ -1,14 +1,10 @@
+package Homeworks;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-public class HelloTest {
-
-    @Test
-    public void testHello(){
-        String name = "Katya";
-        System.out.println("Hello from "+ name);
-    }
+public class Ex4 {
 
     @Test
     public void testSendGetRequest(){
@@ -17,4 +13,5 @@ public class HelloTest {
                 .andReturn();
         System.out.println(response.body().asString());
     }
+
 }
