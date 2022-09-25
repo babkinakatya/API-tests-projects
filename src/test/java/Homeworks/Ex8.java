@@ -53,8 +53,6 @@ public class Ex8 {
         }
     }
 
-
-
     public void submitTask() {
             JsonPath response = RestAssured
                     .given()

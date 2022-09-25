@@ -16,17 +16,18 @@ import java.util.Map;
 public class Ex9 {
 
 
-    List<WebElement> passwordList = new ArrayList<>();
-    List<String> cookiesList = new ArrayList<>();
-    String login = "super_admin";
+    public List<WebElement> passwordList = new ArrayList<>();
+    public List<String> cookiesList = new ArrayList<>();
+    public String login = "super_admin";
 
     public static final String PASSWORD_LIST_LOCATOR = ".//table[contains(caption, 'to SplashData')]" + "//td[@align='left']";
 
 
     @Test
-    public void testGetDoneTask() {
+    public void testCheckAuthCookie() {
         findPasswordList();
         for (int i = 0; i < passwordList.size(); i++) {
+
             Map<String, Object> body = new HashMap<>();
             body.put("login", login);
             body.put("password", passwordList.get(i).getText());
@@ -48,9 +49,9 @@ public class Ex9 {
                     .post("https://playground.learnqa.ru/ajax/api/check_auth_cookie")
                     .andReturn();
             String answer = responseAnswer.body().asString();
+
             if (!answer.equals("You are NOT authorized")) {
-                int index = j;
-                System.out.println("Правильный пароль:" + passwordList.get(index).getText());
+                System.out.println("Правильный пароль:" + passwordList.get(j).getText());
                 System.out.println("Сообщение:" + answer);
             }
         }
